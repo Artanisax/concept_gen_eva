@@ -1,0 +1,70 @@
+python text2img.py --prompt prompt_unwanted --float16 --output_name small_np_debug
+python text2img.py --prompt prompt_unwanted --float16 --output_name small_np_debug
+python txt2img.py --prompt prompt_unwanted --float16 --output_name small_np_debug
+python txt2img.py --prompt prompt_unwanted --output_name small_np_debug
+python txt2img.py --prompt prompt_unwanted --output_name small_np_debug
+python txt2img.py --prompt prompt_target --output_name small_np_debug
+python txt2img.py --prompt prompt_target --output_name small_np_debug
+python txt2img.py --prompt prompt_target --output_name small_np_debug
+python txt2img.py --prompt prompt_target --output_name small_np_debug
+python txt2img.py --prompt prompt_target --output_name small_np_debug
+python txt2img.py --prompt prompt_target --output_name small_np_debug
+python txt2img.py --prompt prompt_target --output_name small_np_debug
+python txt2img.py --prompt prompt_target --output_name small_np_debug
+python txt2img.py --prompt prompt_target --output_name small_np_debug
+python txt2img.py --prompt prompt_target --output_name small_np_debug
+python txt2img.py --prompt prompt_target --output_name small_np_debug
+python txt2img.py --prompt prompt_target --output_name small_np_debug
+python txt2img.py --prompt prompt_target --output_name small_np_debug
+python txt2img.py --prompt prompt_target --output_name small_np_debug
+python txt2img.py --prompt prompt_target --output_name small_np_debug
+python txt2img.py --prompt prompt_target --output_name small_np_debug
+python txt2img.py --prompt prompt_target --output_name small_np_debug
+python txt2img.py --prompt prompt_target --output_name small_np_debug
+python txt2img.py --prompt prompt_target --output_name small_np_debug
+python txt2img.py --prompt prompt_unwanted --output_name debug
+python txt2img.py --prompt prompt_unwanted --output_name debug
+python txt2img.py --prompt prompt_unwanted --output_name debug
+python txt2img.py --prompt prompt_unwanted --output_name debug
+python txt2img.py --prompt prompt_unwanted --output_name debug_500step
+python txt2img.py --prompt prompt_unwanted --output_name debug_500step --seed 1
+python txt2img.py --prompt prompt_unwanted --output_name debug_500step --seed 1
+python txt2img.py --prompt prompt_unwanted --output_name debug_100step --seed 1
+python txt2img.py --prompt prompt_unwanted --output_name debug_100step --seed 1
+python txt2img.py --prompt prompt_unwanted --output_name debug_50step --seed 1
+python txt2img.py --prompt prompt_unwanted --output_name debug_100step --seed 1
+python txt2img.py --prompt prompt_unwanted --output_name debug_100step --seed 1
+python txt2img.py --prompt prompt_unwanted --output_name debug_50step --seed 1
+python txt2img.py --prompt prompt_unwanted --output_name debug_10step --seed 1
+python txt2img.py --prompt prompt_unwanted --output_name debug_10step --seed 1
+python txt2img_common.py --prompt prompt_unwanted --output_name debug_10step --seed 1
+python txt2img_common.py --prompt prompt_unwanted --output_name debug_10step --seed 1
+python txt2img_common.py --prompt prompt_unwanted --output_name debug_10step --seed 1 --model_name /egr/research-dselab/renjie3/renjie/NeurIPS24_concept_removal/diffusers/examples/textual_inversion/textual_inversion_teddy_100step_lr5e-3
+python txt2img_common.py --prompt prompt_unwanted --output_name debug_10step --seed 1 --model_name /egr/research-dselab/renjie3/renjie/NeurIPS24_concept_removal/diffusers/examples/textual_inversion/textual_inversion_teddy_100step_lr5e-3
+python txt2img.py --prompt prompt_unwanted --output_name debug_10step --seed 1 --model_name /egr/research-dselab/renjie3/renjie/NeurIPS24_concept_removal/diffusers/examples/textual_inversion/textual_inversion_teddy_100step_lr5e-3
+python txt2img_common.py --prompt prompt_unwanted --output_name debug_base --seed 1
+python txt2img.py --prompt prompt_unwanted --output_name debug_not_full_model --seed 1
+python txt2img.py --prompt prompt_unwanted --output_name debug_not_full_model --seed 1
+python txt2img.py --prompt prompt_unwanted --output_name debug_not_full_model --seed 1
+python txt2img.py --prompt prompt_unwanted --output_name debug_not_full_model --seed 1
+python txt2img.py --prompt prompt_unwanted --output_name debug_not_full_model --seed 1
+python txt2img.py --prompt prompt_unwanted --output_name debug_not_full_model --seed 1
+python txt2img.py --prompt prompt_unwanted --output_name debug_not_full_model --seed 1
+python txt2img.py --prompt prompt_unwanted --output_name debug_not_full_model --seed 1
+python txt2img.py --prompt prompt_unwanted --output_name debug_not_full_model --seed 1
+python txt2img.py --prompt prompt_unwanted --output_name debug_not_full_model --seed 1
+python txt2img.py --prompt prompt_unwanted --output_name debug_not_full_model --seed 1
+python txt2img.py --prompt prompt_unwanted --output_name debug_not_full_model --seed 1
+python txt2img.py --prompt prompt_unwanted --output_name debug_not_full_model --seed 1
+python txt2img.py --prompt prompt_unwanted --output_name debug_not_full_model --seed 1
+python txt2img.py --prompt prompt_unwanted --output_name debug_not_full_model --seed 1
+python txt2img.py --prompt prompt_unwanted --output_name debug_not_full_model --seed 1
+python txt2img_common.py --prompt prompt_unwanted --output_name debug_base --seed 1
+python txt2img_common.py --prompt prompt_unwanted --output_name debug_base --seed 1
+python txt2img_common.py --prompt prompt_unwanted --output_name debug_base --seed 1
+python txt2img.py --prompt prompt_unwanted --output_name debug_not_full_model --seed 1
+python txt2img.py --prompt prompt_unwanted --output_name debug_not_full_model --seed 1
+python txt2img.py --prompt prompt_unwanted --output_name debug_not_full_model --seed 1
+python txt2img.py --prompt prompt_unwanted --output_name debug_not_full_model --seed 1
+python txt2img.py --prompt prompt_unwanted --output_name debug_not_full_model --seed 1
+python txt2img.py --prompt prompt_unwanted --output_name debug_not_full_model --seed 1

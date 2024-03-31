@@ -1,0 +1,3 @@
+<rj-begin> A photo of teddy <rj-end>
+A photo of teddy
+A photo of dog
