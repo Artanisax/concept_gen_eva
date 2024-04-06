@@ -38,7 +38,7 @@ if args.model_name == "stabilityai/stable-diffusion-2":
 
 elif args.model_name == "CompVis/stable-diffusion-v1-4":
 
-    data = safetensors.torch.load_file('/egr/research-dselab/renjie3/renjie/NeurIPS24_concept_removal/diffusers/examples/textual_inversion/textual_inversion_teddy_10step_lr5e-3/learned_embeds-steps-10.safetensors')
+    data = safetensors.torch.load_file('/egr/research-dselab/renjie3/renjie/NeurIPS24_concept_removal/concept_removal/results/teddy_100step_lr5e-3_endMSE_no_teddy/learned_embeds-steps-100.safetensors')
 
     tokenizer = CLIPTokenizer.from_pretrained(args.model_name, subfolder="tokenizer", cache_dir="/localscratch/renjie/cache2/")
     text_encoder = CLIPTextModel.from_pretrained(

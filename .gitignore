@@ -2,3 +2,6 @@
 results/
 cat/
 *flax.py
+data/
+__pycache__
+dalle_openai.py

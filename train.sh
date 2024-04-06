@@ -1,7 +1,7 @@
 export MODEL_NAME="CompVis/stable-diffusion-v1-4"
 export DATA_DIR="./cat"
 
-CUDA_VISIBLE_DEVICES="1" accelerate launch textual_inversion.py \
+CUDA_VISIBLE_DEVICES="7" accelerate launch textual_inversion.py \
   --pretrained_model_name_or_path=$MODEL_NAME \
   --train_data_dir=$DATA_DIR \
   --learnable_property="object" \
@@ -15,7 +15,7 @@ CUDA_VISIBLE_DEVICES="1" accelerate launch textual_inversion.py \
   --scale_lr \
   --lr_scheduler="constant" \
   --lr_warmup_steps=0 \
-  --output_dir="textual_inversion_teddy_100step_lr5e-3" \
+  --output_dir="results/teddy_100step_lr5e-3_endMSE_no_teddy" \
   --save_steps=10 \
   --checkpointing_steps=100 \
   --num_vectors 2

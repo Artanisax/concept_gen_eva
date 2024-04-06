@@ -792,7 +792,7 @@ def main():
         begin_placeholder_token="<rj-begin>", 
         end_placeholder_token="<rj-end>", 
         unwanted_placeholder_token="teddy", 
-        target_placeholder_token="bear", 
+        target_placeholder_token="", 
         repeats=args.repeats,
         learnable_property=args.learnable_property,
         center_crop=args.center_crop,
@@ -911,20 +911,22 @@ def main():
         text_encoder.train()
         for step, batch in enumerate(train_dataloader):
             with accelerator.accumulate(text_encoder):
+                begin_mse = 0
+                end_mse = 0
                 # Convert images to latent space
-                latents = vae.encode(batch["pixel_values"].to(dtype=weight_dtype)).latent_dist.sample().detach()
-                latents = latents * vae.config.scaling_factor
+                # latents = vae.encode(batch["pixel_values"].to(dtype=weight_dtype)).latent_dist.sample().detach()
+                # latents = latents * vae.config.scaling_factor
 
                 # Sample noise that we'll add to the latents
-                noise = torch.randn_like(latents)
-                bsz = latents.shape[0]
+                # noise = torch.randn_like(latents)
+                # bsz = latents.shape[0]
                 # Sample a random timestep for each image
-                timesteps = torch.randint(0, noise_scheduler.config.num_train_timesteps, (bsz,), device=latents.device)
-                timesteps = timesteps.long()
+                # timesteps = torch.randint(0, noise_scheduler.config.num_train_timesteps, (bsz,), device=latents.device)
+                # timesteps = timesteps.long()
 
                 # Add noise to the latents according to the noise magnitude at each timestep
                 # (this is the forward diffusion process)
-                noisy_latents = noise_scheduler.add_noise(latents, noise, timesteps)
+                # noisy_latents = noise_scheduler.add_noise(latents, noise, timesteps)
 
                 # Get the text embedding for conditioning
                 unwanted_encoder_hidden_states = text_encoder(batch["unwanted_input_ids"])[0].to(dtype=weight_dtype)
@@ -936,7 +938,7 @@ def main():
                 unwanted_summary_token = unwanted_encoder_hidden_states[:, batch["length"]+1:batch["length"]+21]
                 target_summary_token = target_encoder_hidden_states[:, batch["length"]-1:batch["length"]-1 + 20]
 
-                begin_mse = F.mse_loss(unwanted_prompt_token.float(), target_prompt_token.float(), reduction="mean")
+                # begin_mse = F.mse_loss(unwanted_prompt_token.float(), target_prompt_token.float(), reduction="mean")
                 end_mse = F.mse_loss(unwanted_summary_token.float(), target_summary_token.float(), reduction="mean")
 
                 # batch["unwanted_input_ids"][0, 2:batch["length"]]

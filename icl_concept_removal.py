@@ -13,6 +13,7 @@ parser.add_argument("--counter_exit", default=10, type=int)
 parser.add_argument("--batch_size", default=1, type=int)
 parser.add_argument("--num_inference_steps", default=50, type=int)
 parser.add_argument("--seed", default=0, type=int)
+parser.add_argument("--icl_model", default='tinyllama', type=str)
 
 # Parse the arguments
 args = parser.parse_args()
@@ -23,6 +24,7 @@ args = parser.parse_args()
 # python text2img_common.py --model_name stabilityai/stable-diffusion-2 --prompt mem_living --output_name common_gen_debug
 
 import os
+os.environ['HF_HOME'] = '/localscratch/renjie/cache'
 
 # if args.local != '':
 #     os.environ['CUDA_VISIBLE_DEVICES'] = args.local
@@ -32,6 +34,8 @@ from diffusers import StableDiffusionPipeline, EulerDiscreteScheduler, DDIMSched
 
 import numpy as np
 import random
+
+from gpt_utils import llm_concept_detect_removal, TinyLlama, TinyLlamaChat
 
 def set_seed(seed):
     torch.cuda.manual_seed(seed)
@@ -60,44 +64,53 @@ from time import time
 
 time_counter = 0
 
+if args.icl_model == "tinyllama":
+    icl_model = TinyLlama(None)
+
+elif args.icl_model == "tinyllama_chat":
+    icl_model = TinyLlamaChat(None)
+
 counter = 0
 with open(f"{args.prompt}.txt", 'r') as file:
     for line_id, line in enumerate(file):
         
-        # Each 'line' includes a newline character at the end, you can strip it using .strip()
         prompt = line.strip()
-        save_name = '_'.join(prompt.split(' ')).replace('/', '<#>')
-
-        print(prompt)
-        # if '/' in prompt:
-        #     continue
-    
+        print("Before: ", prompt)
+        filtered_prompt = llm_concept_detect_removal(prompt)
+        # filtered_prompt = icl_model.inference(prompt)
+        print(filtered_prompt)
+        continue
+        import pdb ; pdb.set_trace()
         args.prompt_id = counter
-        save_prefix = f"{save_dir}/{args.prompt_id}_{save_name}_common_seed{args.seed}"
 
+        save_name = '_'.join(prompt.split(' ')).replace('/', '<#>')
+        save_prefix = f"{save_dir}/{args.prompt_id}_before_{save_name}_common_seed{args.seed}"
         set_seed(args.seed)
-
-        start_time = time()
         # images = pipe(prompt_embeds=auged_prompt_embeds, num_images_per_prompt=4).images
         images = pipe(prompt, num_images_per_prompt=args.batch_size, num_inference_steps=args.num_inference_steps).images
         image = images[0]
-        end_time = time()
-        print(end_time - start_time)
         try:
             image.save(f"{save_prefix}.png")
             print("image saved at: ", f"{save_prefix}.png")
         except:
             print(f"save at {save_prefix} failed")
-            image.save(f"{save_dir}/{args.prompt_id}.png")
-            print("image saved at: ", f"{save_dir}/{args.prompt_id}.png")
             continue
-        
-        if line_id == 0:
-            continue
-        time_counter += end_time - start_time
-        counter += 1
-        if counter >= args.counter_exit:
-            break
 
-# print(time_counter / counter)
-# print(time_counter / counter * (args.counter_exit / 5) / args.batch_size)
+        save_name = '_'.join(filtered_prompt.split(' ')).replace('/', '<#>')
+        print("After: ", filtered_prompt)
+        save_prefix = f"{save_dir}/{args.prompt_id}_after_{save_name}_common_seed{args.seed}"
+        set_seed(args.seed)
+        # images = pipe(prompt_embeds=auged_prompt_embeds, num_images_per_prompt=4).images
+        images = pipe(filtered_prompt, num_images_per_prompt=args.batch_size, num_inference_steps=args.num_inference_steps).images
+        image = images[0]
+        try:
+            image.save(f"{save_prefix}.png")
+            print("image saved at: ", f"{save_prefix}.png")
+        except:
+            print(f"save at {save_prefix} failed")
+            continue
+
+
+        counter += 1
+        # if counter >= args.counter_exit:
+        #     break
