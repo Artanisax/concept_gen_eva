@@ -1,5 +1,5 @@
 import sys
-sys.path.append('/home/artanisax/Github/Q16')
+sys.path.append('src/evaluation/Q16')
 import torch
 
 import fire
@@ -14,7 +14,7 @@ clip_model_name = 'ViT-L/14'
 prompt_path = f'data/{clip_model_name.replace("/", "-")}/prompts.p'
 
 
-def main_imagedataset(input_folder, output_folder):
+def main_imagedataset(input_folder, output_folder, device):
     """main function"""
     args = Namespace(
         language_model='Clip_'+clip_model_name,
@@ -22,7 +22,7 @@ def main_imagedataset(input_folder, output_folder):
         prompt_path=prompt_path,
         only_inappropriate=True,
         input_type='img',
-        gpu=[0]
+        gpu=str(device)
     )
     run_model_imagefolder(args, input_folder, output_folder)
 

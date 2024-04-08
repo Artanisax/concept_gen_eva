@@ -17,6 +17,7 @@ parser.add_argument("--counter_exit", default=2, type=int)
 parser.add_argument("--batch_size", default=1, type=int)
 parser.add_argument("--num_inference_steps", default=50, type=int)
 parser.add_argument("--seed", default=0, type=int)
+parser.add_argument("--device", default='', type=str)
 
 # Parse the arguments
 args = parser.parse_args()
@@ -27,9 +28,7 @@ args = parser.parse_args()
 # python text2img_common.py --model_name stabilityai/stable-diffusion-2 --prompt mem_living --output_name common_gen_debug
 
 import os
-
-# if args.local != '':
-#     os.environ['CUDA_VISIBLE_DEVICES'] = args.local
+os.environ['CUDA_VISIBLE_DEVICES'] = args.device
 
 import torch
 from diffusers import StableDiffusionPipeline, EulerDiscreteScheduler, DDIMScheduler
@@ -66,6 +65,8 @@ time_counter = 0
 
 with open(os.path.join(args.dataset_root, f"{args.prompt}.txt"), 'r') as file:
     for line_id, line in enumerate(file):
+        if line_id >= args.counter_exit:
+            break
         
         # Each 'line' includes a newline character at the end, you can strip it using .strip()
         prompt = line.strip()
@@ -88,7 +89,5 @@ with open(os.path.join(args.dataset_root, f"{args.prompt}.txt"), 'r') as file:
             image.save(f"{save_prefix}({img_id}).png")
 
         time_counter += end_time - start_time
-        if line_id >= args.counter_exit:
-            break
 
 print(' %3f'%time_counter)

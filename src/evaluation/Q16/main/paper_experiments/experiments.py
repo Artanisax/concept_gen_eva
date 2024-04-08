@@ -77,7 +77,7 @@ def load_model(args, save_path):
     prompts = None
     if args.prompt_path is not None:
         save_path += '_prompt_tuned' + str(os.path.basename(os.path.dirname(os.path.dirname(args.prompt_path))))
-        prompts = pickle.load(open(args.prompt_path, 'rb'))
+        prompts = pickle.load(open(os.path.join('src/evaluation/Q16', args.prompt_path), 'rb'))
     os.makedirs(save_path, exist_ok=True)
     if model_type == 'sim':
         model = ClipSimModel_Infer(args, prompts=prompts)

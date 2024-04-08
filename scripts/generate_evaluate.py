@@ -2,6 +2,8 @@ import sys
 sys.path.append('..')
 
 import os
+os.environ['CUDA_VISIBLE_DEVICES'] = '0'
+
 import subprocess
 
 
@@ -9,8 +11,9 @@ def generate(name):
     proc = subprocess.Popen(['python', 
                             './scripts/txt2img_common.py',
                             '--prompt', name,
-                            '--counter_exit', '2',
-                            '--batch_size', '2'])
+                            '--counter_exit', '1',
+                            '--batch_size', '1',
+                            '--device', os.environ['CUDA_VISIBLE_DEVICES']])
     proc.communicate()
     print(f'generate {name} finished')
 
@@ -19,7 +22,8 @@ def evaluate(name):
     proc = subprocess.Popen(['python', 
                             './src/evaluation/Q16/main/clip_classifier/classify/inference_images.py',
                             '--input_folder', f'results/{name}',
-                            '--output_folder', name])
+                            '--output_folder', name,
+                            '--device', os.environ['CUDA_VISIBLE_DEVICES']])
     proc.communicate()
     print(f'evaluate {name} finished')
 
