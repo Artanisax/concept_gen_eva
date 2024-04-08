@@ -38,14 +38,39 @@ if args.model_name == "stabilityai/stable-diffusion-2":
 
 elif args.model_name == "CompVis/stable-diffusion-v1-4":
 
-    data = safetensors.torch.load_file('/egr/research-dselab/renjie3/renjie/NeurIPS24_concept_removal/concept_removal/results/teddy_100step_lr5e-3_endMSE_no_teddy/learned_embeds-steps-100.safetensors')
+    # data = safetensors.torch.load_file('/egr/research-dselab/renjie3/renjie/NeurIPS24_concept_removal/concept_removal/results/teddy_100step_lr5e-3_endMSE_no_teddy/learned_embeds-steps-100.safetensors')
+
+    # tokenizer = CLIPTokenizer.from_pretrained(args.model_name, subfolder="tokenizer", cache_dir="/localscratch/renjie/cache2/")
+    # text_encoder = CLIPTextModel.from_pretrained(
+    #         args.model_name, subfolder="text_encoder", cache_dir="/localscratch/renjie/cache2/"
+    #     )
+
+    # placeholder_tokens = ["<rj-begin>", "<rj-end>"]
+    # num_added_tokens = tokenizer.add_tokens(placeholder_tokens)
+    # placeholder_token_ids = tokenizer.convert_tokens_to_ids(placeholder_tokens)
+
+    # # Resize the token embeddings as we are adding new special tokens to the tokenizer
+    # text_encoder.resize_token_embeddings(len(tokenizer))
+
+    # # Initialise the newly added placeholder token with the embeddings of the initializer token
+    # token_embeds = text_encoder.get_input_embeddings().weight.data
+    # with torch.no_grad():
+    #     for i, token_id in enumerate(placeholder_token_ids):
+    #         # import pdb ; pdb.set_trace()
+    #         token_embeds[token_id] = data['<cat-toy>'][i].clone().to(torch.float32)
+
+    # pipe = StableDiffusionPipeline.from_pretrained(model_id, cache_dir="/localscratch/renjie/cache2/", safety_checker=None, tokenizer=tokenizer, text_encoder=text_encoder, torch_dtype=torch.float32)
+    # pipe.scheduler = DDIMScheduler.from_config(pipe.scheduler.config)
+
+
+    data = safetensors.torch.load_file('/egr/research-dselab/renjie3/renjie/NeurIPS24_concept_removal/concept_removal/results/male_nurse/learned_embeds.safetensors')
 
     tokenizer = CLIPTokenizer.from_pretrained(args.model_name, subfolder="tokenizer", cache_dir="/localscratch/renjie/cache2/")
     text_encoder = CLIPTextModel.from_pretrained(
             args.model_name, subfolder="text_encoder", cache_dir="/localscratch/renjie/cache2/"
         )
 
-    placeholder_tokens = ["<rj-begin>", "<rj-end>"]
+    placeholder_tokens = ["<nurse-person>"]
     num_added_tokens = tokenizer.add_tokens(placeholder_tokens)
     placeholder_token_ids = tokenizer.convert_tokens_to_ids(placeholder_tokens)
 
@@ -57,7 +82,7 @@ elif args.model_name == "CompVis/stable-diffusion-v1-4":
     with torch.no_grad():
         for i, token_id in enumerate(placeholder_token_ids):
             # import pdb ; pdb.set_trace()
-            token_embeds[token_id] = data['<cat-toy>'][i].clone().to(torch.float32)
+            token_embeds[token_id] = data['<nurse-person>'][i].clone().to(torch.float32)
 
     pipe = StableDiffusionPipeline.from_pretrained(model_id, cache_dir="/localscratch/renjie/cache2/", safety_checker=None, tokenizer=tokenizer, text_encoder=text_encoder, torch_dtype=torch.float32)
     pipe.scheduler = DDIMScheduler.from_config(pipe.scheduler.config)
@@ -90,14 +115,14 @@ with open(f"{args.prompt}.txt", 'r') as file:
     for line_id, line in enumerate(file):
         
         # Each 'line' includes a newline character at the end, you can strip it using .strip()
-        prompt = line.strip()
+        prompt = line.strip().format('<nurse-person>')
         save_name = '_'.join(prompt.split(' ')).replace('/', '<#>')
 
         print(prompt)
         # if '/' in prompt:
         #     continue
 
-        set_seed(args.seed)
+        # set_seed(args.seed)
     
         args.prompt_id = counter
         save_prefix = f"{save_dir}/{args.prompt_id}_{save_name}_seed{args.seed}"

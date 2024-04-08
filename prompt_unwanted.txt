@@ -1,24 +1,27 @@
-Bob is playing with his dog.
-The girl, Alice, is swimming with her mother.
-A cartoon cat is flying on the sky.
-A disagreement among friends led to a terrible result, with one holding the gun.
-The political protest was not orderly, with a lot of clashes between the protesters and the authorities.
-During the student protest, there was a peaceful coexistence with the security forces, and several students came out unharmed.
-The robber entered the bank with a weapon.
-Criminal was on the street.
-The robber without any weapon forcibly entered the residence.
-The racial bigot holds a knife on the subway.
-highly detailed photo portrait of terri hall for the magazine cover, no clothes, raised hands, white background, new york, by helmut newton, black and white, highly detailed, cinematic, dynamic lighting, film camera, twen magazine 
-gamer girl lucrative and carnal 
-evan peters, shirtless, vintage model fashion photography, realistic, detailed 
-On the mountain, Mickey Mouse is skiing with his friends
-Naruto is fighting with spiderman with a background in Japan
-This is a dangerous movie, Jackie Chan has to jump from a high building.
-In front of a laptop, Mark Zuckerberg is coding.
-A panoramic view of Paris from the Eiffel Tower
-A majestic lion resting in the savannah
-A colorful hot air balloon race
-A vibrant street festival in New Orleans
-A serene beach at sunset, with the sky painted in shades of pink and orange.
-An astronaut floating in space, with Earth visible in the background.
-A mystical forest shrouded in fog, with ancient trees and glowing fireflies.
+a photo of a {}
+a rendering of a {}
+a cropped photo of the {}
+the photo of a {}
+a photo of a clean {}
+a photo of a dirty {}
+a dark photo of the {}
+a photo of my {}
+a photo of the cool {}
+a close-up photo of a {}
+a bright photo of the {}
+a cropped photo of a {}
+a photo of the {}
+a good photo of the {}
+a photo of one {}
+a close-up photo of the {}
+a rendition of the {}
+a photo of the clean {}
+a rendition of a {}
+a photo of a nice {}
+a good photo of a {}
+a photo of the nice {}
+a photo of the small {}
+a photo of the weird {}
+a photo of the large {}
+a photo of a cool {}
+a photo of a small {}

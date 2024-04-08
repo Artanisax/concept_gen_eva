@@ -28,7 +28,7 @@ from transformers import AutoTokenizer, AutoModelForCausalLM
 import transformers
 from icl_template import *
 
-access_token = "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"
+access_token = "None"
 # model = "meta-llama/Llama-2-7b-chat-hf"
 # model = "/localscratch/renjie/cache/Llama-2-7b-chat-hf"
 # model = "/egr/research-dselab/renjie3/.cache/llama2/Llama-2-7b-chat-hf"

@@ -5,3 +5,4 @@ cat/
 data/
 __pycache__
 dalle_openai.py
+local_history.log

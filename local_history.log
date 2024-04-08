@@ -71,7 +71,7 @@ python txt2img.py --prompt prompt_unwanted --output_name debug_not_full_model --
 python txt2img.py --prompt prompt_unwanted --output_name endMSE --seed 1
 python txt2img.py --prompt prompt_unwanted --output_name endMSE_no_teddy --seed 1
 python txt2img.py --prompt prompt_unwanted --output_name endMSE_no_teddy --seed 1
-OPENAI_API_KEY=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 python icl_concept_removal.py --prompt prompt_unwanted --output_name icl --seed 1
+python icl_concept_removal.py --prompt prompt_unwanted --output_name icl --seed 1
 python icl_concept_removal.py --prompt prompt_unwanted --output_name icl --seed 1
 python icl_concept_removal.py --prompt prompt_unwanted --output_name icl --seed 1
 python icl_concept_removal.py --prompt prompt_unwanted --output_name icl --seed 1
@@ -150,3 +150,47 @@ python llama2_step1.py --output_name giphy --template llama2_templatev0_3
 python -u llama2_step1.py --output_name giphy --template llama2_templatev0_3
 python -u llama2_step1.py --output_name giphy --template llama2_templatev0_3
 python -u llama2_step1.py --output_name giphy --template llama2_templatev0_3
+python dalle_openai.py --prompt prompt_unwanted
+python dalle_openai.py --prompt prompt_unwanted --outputname dalle3
+python dalle_openai.py --prompt prompt_unwanted --output_name dalle3
+python dalle_openai.py --prompt prompt_unwanted --output_name dalle3
+python dalle_openai.py --prompt prompt_unwanted --output_name dalle3
+python dalle_openai.py --prompt prompt_unwanted --output_name dalle3
+python dalle_openai.py --prompt prompt_unwanted --output_name dalle3
+python dalle_openai.py --prompt prompt_unwanted --output_name dalle3
+python dalle_openai.py --prompt prompt_unwanted --output_name dalle3
+python dalle_openai.py --prompt prompt_unwanted --output_name dalle3
+python dalle_openai.py --prompt prompt_unwanted --output_name dalle3
+python dalle_openai.py --prompt prompt_unwanted --output_name dalle3
+python dalle_openai.py --prompt prompt_unwanted --output_name dalle3
+python dalle_openai.py --prompt prompt_unwanted --output_name dalle3
+python dalle_openai.py --prompt prompt_unwanted --output_name dalle3
+python dalle_openai.py --prompt prompt_unwanted --output_name dalle3
+python dalle_openai.py --prompt prompt_unwanted --output_name dalle3
+python dalle_openai.py --prompt prompt_unwanted --output_name dalle3
+python dalle_openai.py --prompt prompt_unwanted --output_name dalle3
+python dalle_openai.py --prompt prompt_unwanted --output_name dalle3
+python dalle_openai.py --prompt prompt_unwanted --output_name dalle3
+python dalle_openai.py --prompt prompt_unwanted --output_name dalle3
+python dalle_openai.py --prompt prompt_unwanted --output_name dalle3
+python dalle_openai.py --prompt prompt_unwanted --output_name dalle3
+python dalle_openai.py --prompt prompt_unwanted --output_name dalle3
+python dalle_openai.py --prompt prompt_unwanted --output_name dalle3
+python dalle_openai.py --prompt prompt_unwanted --output_name dalle3
+python dalle_openai.py --prompt prompt_unwanted --output_name dalle3
+python dalle_openai.py --prompt prompt_unwanted --output_name dalle3
+python dalle_openai.py --prompt prompt_unwanted --output_name dalle3
+python dalle_openai.py --prompt prompt_unwanted --output_name dalle3
+python dalle_openai.py --prompt prompt_unwanted --output_name dalle3
+python dalle_openai.py --prompt prompt_unwanted --output_name dalle3
+python dalle_openai.py --prompt prompt_unwanted --output_name dalle3
+python txt2img_common.py --prompt prompt_unwanted --output_name empty --seed 2
+python txt2img_common.py --prompt prompt_unwanted --output_name empty --seed 2
+python dalle_openai.py --prompt prompt_unwanted --output_name dalle3
+python dalle_openai.py --prompt prompt_engineer --output_name dalle3
+python txt2img.py --prompt prompt_nurse --output_name test --seed 1
+python txt2img.py --prompt prompt_nurse --output_name test --seed 1
+python txt2img.py --prompt prompt_unwanted --output_name test --seed 1
+python txt2img.py --prompt prompt_unwanted --output_name test --seed 1 --counter_exit 100
+python txt2img.py --prompt prompt_unwanted --output_name test_male --seed 1 --counter_exit 100
+python txt2img.py --prompt prompt_unwanted --output_name test_male --seed 1 --counter_exit 100
