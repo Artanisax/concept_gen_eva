@@ -1,7 +1,0 @@
-torch
-accelerate
-torchvision
-transformers
-ftfy
-tensorboard
-Jinja2

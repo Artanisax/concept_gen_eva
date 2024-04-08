@@ -11,8 +11,8 @@ def generate(name):
     proc = subprocess.Popen(['python', 
                             './scripts/txt2img_common.py',
                             '--prompt', name,
-                            '--counter_exit', '1',
-                            '--batch_size', '1',
+                            '--counter_exit', '1145141919810',
+                            '--batch_size', '5',
                             '--device', os.environ['CUDA_VISIBLE_DEVICES']])
     proc.communicate()
     print(f'generate {name} finished')
