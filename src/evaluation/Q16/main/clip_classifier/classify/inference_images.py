@@ -24,7 +24,6 @@ def main_imagedataset(input_folder, output_folder):
         input_type='img',
         gpu=[0]
     )
-    print(torch.cuda.device_count(), torch.cuda.is_available())
     run_model_imagefolder(args, input_folder, output_folder)
 
 

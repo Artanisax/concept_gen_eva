@@ -1,15 +1,19 @@
+import sys
+sys.path.append('..')
+
 import argparse
 
 # Create the parser
-parser = argparse.ArgumentParser(description="Process some integers.")
+parser = argparse.ArgumentParser()
 
 # Add arguments
-parser.add_argument("--model_name", type=str, default="CompVis/stable-diffusion-v1-4", help="The name of diffusion model.")
+parser.add_argument("--model_name", type=str, default='CompVis/stable-diffusion-v1-4', help="The name of diffusion model.")
 parser.add_argument("--local", type=str, default='', help="?")
-parser.add_argument("--prompt", type=str, default="a photo of an astronaut riding a horse on mars", help="The prompt for target content.")
+parser.add_argument("--dataset_root", type=str, default='./datasets/txts')
+parser.add_argument("--prompt", type=str, default='i2p', help="The txt filename containing prompts.")
 parser.add_argument("--job_id", type=str, default='local', help="The id of job.")
 parser.add_argument("--output_name", type=str, default='local', help="The name of output.")
-parser.add_argument("--counter_exit", default=10, type=int)
+parser.add_argument("--counter_exit", default=2, type=int)
 parser.add_argument("--batch_size", default=1, type=int)
 parser.add_argument("--num_inference_steps", default=50, type=int)
 parser.add_argument("--seed", default=0, type=int)
@@ -52,7 +56,7 @@ else:
     pipe.scheduler = DDIMScheduler.from_config(pipe.scheduler.config)
 pipe = pipe.to(device)
 
-save_dir = f"./results/{args.job_id}_{args.prompt}_{args.output_name}"
+save_dir = f"./results/{args.prompt}"
 if not os.path.exists(save_dir):
     os.makedirs(save_dir)
 
@@ -60,44 +64,31 @@ from time import time
 
 time_counter = 0
 
-counter = 0
-with open(f"{args.prompt}.txt", 'r') as file:
+with open(os.path.join(args.dataset_root, f"{args.prompt}.txt"), 'r') as file:
     for line_id, line in enumerate(file):
         
         # Each 'line' includes a newline character at the end, you can strip it using .strip()
         prompt = line.strip()
-        save_name = '_'.join(prompt.split(' ')).replace('/', '<#>')
+        # save_name = '_'.join(prompt.split(' ')).replace('/', '<#>')
 
         print(prompt)
         # if '/' in prompt:
         #     continue
     
-        args.prompt_id = counter
-        save_prefix = f"{save_dir}/{args.prompt_id}_{save_name}_common_seed{args.seed}"
+        args.prompt_id = line_id
+        save_prefix = "{}/{:05d}".format(save_dir, line_id)
 
         set_seed(args.seed)
 
         start_time = time()
-        # images = pipe(prompt_embeds=auged_prompt_embeds, num_images_per_prompt=4).images
         images = pipe(prompt, num_images_per_prompt=args.batch_size, num_inference_steps=args.num_inference_steps).images
-        image = images[0]
         end_time = time()
-        print(end_time - start_time)
-        try:
-            image.save(f"{save_prefix}.png")
-            print("image saved at: ", f"{save_prefix}.png")
-        except:
-            print(f"save at {save_prefix} failed")
-            image.save(f"{save_dir}/{args.prompt_id}.png")
-            print("image saved at: ", f"{save_dir}/{args.prompt_id}.png")
-            continue
-        
-        if line_id == 0:
-            continue
+        print(' %.3f s'%(end_time - start_time))
+        for img_id, image in enumerate(images):
+            image.save(f"{save_prefix}({img_id}).png")
+
         time_counter += end_time - start_time
-        counter += 1
-        if counter >= args.counter_exit:
+        if line_id >= args.counter_exit:
             break
 
-# print(time_counter / counter)
-# print(time_counter / counter * (args.counter_exit / 5) / args.batch_size)
+print(' %3f'%time_counter)
