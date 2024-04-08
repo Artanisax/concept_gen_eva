@@ -4,11 +4,11 @@ import argparse
 parser = argparse.ArgumentParser(description="Process some integers.")
 
 # Add arguments
-parser.add_argument("--model_name", type=str, default="CompVis/stable-diffusion-v1-4", help="an integer to be processed")
-parser.add_argument("--local", type=str, default='', help="The scale of noise offset.")
-parser.add_argument("--prompt", type=str, default="a photo of an astronaut riding a horse on mars", help="The scale of noise offset.")
-parser.add_argument("--job_id", type=str, default='local', help="The scale of noise offset.")
-parser.add_argument("--output_name", type=str, default='local', help="The scale of noise offset.")
+parser.add_argument("--model_name", type=str, default="CompVis/stable-diffusion-v1-4", help="The name of diffusion model.")
+parser.add_argument("--local", type=str, default='', help="?")
+parser.add_argument("--prompt", type=str, default="a photo of an astronaut riding a horse on mars", help="The prompt for target content.")
+parser.add_argument("--job_id", type=str, default='local', help="The id of job.")
+parser.add_argument("--output_name", type=str, default='local', help="The name of output.")
 parser.add_argument("--counter_exit", default=10, type=int)
 parser.add_argument("--batch_size", default=1, type=int)
 parser.add_argument("--num_inference_steps", default=50, type=int)
@@ -45,10 +45,10 @@ device = "cuda"
 
 if args.model_name == "stabilityai/stable-diffusion-2":
     scheduler = EulerDiscreteScheduler.from_pretrained(model_id, subfolder="scheduler")
-    pipe = StableDiffusionPipeline.from_pretrained(model_id, cache_dir="/localscratch/renjie/cache", scheduler=scheduler, safety_checker=None, torch_dtype=torch.float16)
+    pipe = StableDiffusionPipeline.from_pretrained(model_id, cache_dir="./cache", scheduler=scheduler, safety_checker=None, torch_dtype=torch.float16)
 
 else:
-    pipe = StableDiffusionPipeline.from_pretrained(model_id, cache_dir="/localscratch/renjie/cache", safety_checker=None, torch_dtype=torch.float16)
+    pipe = StableDiffusionPipeline.from_pretrained(model_id, cache_dir="./cache", safety_checker=None, torch_dtype=torch.float16)
     pipe.scheduler = DDIMScheduler.from_config(pipe.scheduler.config)
 pipe = pipe.to(device)
 
