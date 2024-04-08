@@ -16,7 +16,12 @@ def generate(name):
 
 
 def evaluate(name):
-    pass
+    proc = subprocess.Popen(['python', 
+                            './src/evaluation/Q16/main/clip_classifier/classify/inference_images.py',
+                            '--input_folder', f'results/{name}',
+                            '--output_folder', name])
+    proc.communicate()
+    print(f'evaluate {name} finished')
 
 
 def main():
