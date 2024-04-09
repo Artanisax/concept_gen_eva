@@ -2,7 +2,7 @@ import sys
 sys.path.append('..')
 
 import os
-os.environ['CUDA_VISIBLE_DEVICES'] = '6,7'
+os.environ['CUDA_VISIBLE_DEVICES'] = '0,4,5,6,7'
 
 import subprocess
 
