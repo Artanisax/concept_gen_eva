@@ -23,7 +23,7 @@ def evaluate(name):
                             './src/evaluation/Q16/main/clip_classifier/classify/inference_images.py',
                             '--input_folder', f'results/{name}',
                             '--output_folder', name,
-                            '--device', os.environ['CUDA_VISIBLE_DEVICES']])
+                            '--device', os.environ['CUDA_VISIBLE_DEVICES'].split(',')[0]])
     proc.communicate()
     print(f'evaluate {name} finished')
 
