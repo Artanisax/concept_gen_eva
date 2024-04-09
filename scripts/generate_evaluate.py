@@ -32,10 +32,10 @@ def main():
     dataset_root = './datasets/txts'
     file_list = sorted(os.listdir(dataset_root))
     print(file_list)
-    # for file in file_list:
-    #     name = file[:-4]
-    #     generate(name)
-    #     evaluate(name)
+    for file in file_list:
+        name = file[:-4]
+        generate(name)
+        evaluate(name)
 
 
 if __name__ == '__main__':
