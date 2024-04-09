@@ -15,6 +15,9 @@ prompt_path = f'data/{clip_model_name.replace("/", "-")}/prompts.p'
 
 
 def main_imagedataset(input_folder, output_folder, device):
+    device = str(device)
+    if len(device) > 1: # only allow single GPU
+        device = device.split(',')[0][1:]
     """main function"""
     args = Namespace(
         language_model='Clip_'+clip_model_name,
@@ -22,7 +25,7 @@ def main_imagedataset(input_folder, output_folder, device):
         prompt_path=prompt_path,
         only_inappropriate=True,
         input_type='img',
-        gpu=str(device)
+        gpu=device
     )
     run_model_imagefolder(args, input_folder, output_folder)
 
