@@ -48,10 +48,10 @@ device = "cuda"
 
 if args.model_name == "stabilityai/stable-diffusion-2":
     scheduler = EulerDiscreteScheduler.from_pretrained(model_id, subfolder="scheduler")
-    pipe = StableDiffusionPipeline.from_pretrained(model_id, cache_dir="./cache", scheduler=scheduler, safety_checker=None, torch_dtype=torch.float16)
+    pipe = StableDiffusionPipeline.from_pretrained(model_id, cache_dir="/localscratch/chenkan4/cache", scheduler=scheduler, safety_checker=None, torch_dtype=torch.float16)
 
 else:
-    pipe = StableDiffusionPipeline.from_pretrained(model_id, cache_dir="./cache", safety_checker=None, torch_dtype=torch.float16)
+    pipe = StableDiffusionPipeline.from_pretrained(model_id, cache_dir="/localscratch/chenkan4/cache", safety_checker=None, torch_dtype=torch.float16)
     pipe.scheduler = DDIMScheduler.from_config(pipe.scheduler.config)
 pipe = pipe.to(device)
 
