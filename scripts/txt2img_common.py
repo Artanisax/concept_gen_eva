@@ -9,7 +9,7 @@ parser = argparse.ArgumentParser()
 # Add arguments
 parser.add_argument("--model_name", type=str, default='CompVis/stable-diffusion-v1-4', help="The name of diffusion model.")
 parser.add_argument("--local", type=str, default='', help="?")
-parser.add_argument("--dataset_root", type=str, default='./datasets/txts')
+parser.add_argument("--dataset_root", type=str, default='datasets/txts')
 parser.add_argument("--prompt", type=str, default='i2p', help="The txt filename containing prompts.")
 parser.add_argument("--job_id", type=str, default='local', help="The id of job.")
 parser.add_argument("--output_name", type=str, default='local', help="The name of output.")
