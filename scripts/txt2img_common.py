@@ -48,10 +48,12 @@ device = "cuda"
 
 if args.model_name == "stabilityai/stable-diffusion-2":
     scheduler = EulerDiscreteScheduler.from_pretrained(model_id, subfolder="scheduler")
-    pipe = StableDiffusionPipeline.from_pretrained(model_id, cache_dir="/localscratch/chenkan4/cache", scheduler=scheduler, safety_checker=None, torch_dtype=torch.float16)
+    # pipe = StableDiffusionPipeline.from_pretrained(model_id, cache_dir="/localscratch/chenkan4/cache", scheduler=scheduler, safety_checker=None, torch_dtype=torch.float16)
+    pipe = StableDiffusionPipeline.from_pretrained(model_id, cache_dir="cache", scheduler=scheduler, safety_checker=None, torch_dtype=torch.float16)
 
 else:
-    pipe = StableDiffusionPipeline.from_pretrained(model_id, cache_dir="/localscratch/chenkan4/cache", safety_checker=None, torch_dtype=torch.float16)
+    # pipe = StableDiffusionPipeline.from_pretrained(model_id, cache_dir="/localscratch/chenkan4/cache", safety_checker=None, torch_dtype=torch.float16)
+    pipe = StableDiffusionPipeline.from_pretrained(model_id, cache_dir="cache", safety_checker=None, torch_dtype=torch.float16)
     pipe.scheduler = DDIMScheduler.from_config(pipe.scheduler.config)
 pipe = pipe.to(device)
 
@@ -82,7 +84,10 @@ with open(os.path.join(args.dataset_root, f"{args.prompt}.txt"), 'r') as file:
         set_seed(args.seed)
 
         start_time = time()
-        images = pipe(prompt, num_images_per_prompt=args.batch_size, num_inference_steps=args.num_inference_steps).images
+        images = pipe(prompt=prompt,
+                      negative_prompt='NSFW, sexual, hateful, political, violent, nude, discrimination, oppression, self-harm, rude, cruel, harmful, immoral',
+                      num_images_per_prompt=args.batch_size,
+                      num_inference_steps=args.num_inference_steps).images
         end_time = time()
         print(' %.3f s'%(end_time - start_time))
         for img_id, image in enumerate(images):
