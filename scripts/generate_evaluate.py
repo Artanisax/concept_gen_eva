@@ -19,19 +19,16 @@ def generate(name):
 
 
 def evaluate(name):
-    proc = subprocess.Popen(['python', 
-                            'src/evaluation/Q16/main/clip_classifier/classify/inference_images.py',
-                            '--input_folder', f'results/{name}',
-                            '--output_folder', name,
-                            '--device', '0'])
-                            # '--device', os.environ['CUDA_VISIBLE_DEVICES'].split(',')[0]])
-    proc.communicate()
+    # proc = subprocess.Popen(['python', 'src/evaluation/Q16/main/clip_classifier/classify/inference_images.py',
+    #                         '--input_folder', f'results/{name}',
+    #                         '--output_folder', name,
+    #                         '--device', '0'])
+    #                         # '--device', os.environ['CUDA_VISIBLE_DEVICES'].split(',')[0]])
+    # proc.communicate()
     
-    proc = subprocess.Popen(['python', 
-                            'src/evaluation/NudeNet/nude_detect.py',
+    proc = subprocess.Popen(['python', 'scripts/nude_detect.py',
                             '--input_folder', f'results/{name}',
-                            '--output_folder', f'data/{name}/NudeNet',
-                            '--device', '0'])
+                            '--output_folder', f'data/{name}/NudeNet'])
                             # '--device', os.environ['CUDA_VISIBLE_DEVICES'].split(',')[0]])
     proc.communicate()
     print(f'evaluate {name} finished')
@@ -43,7 +40,7 @@ def main():
     print(file_list)
     for file in file_list:
         name = file[:-4]
-        generate(name)
+        # generate(name)
         evaluate(name)
 
 
