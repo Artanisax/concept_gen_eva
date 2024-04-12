@@ -48,12 +48,10 @@ for filename in tqdm(sorted(os.listdir(args.input_folder))):
     df = pd.DataFrame(nude_detector.detect(os.path.join(args.input_folder, filename)))
     if not df.empty:
         df = pd.DataFrame([list(df['score'])], columns=df['class'], index=[filename]).T.groupby(level=0).max().T
-        # print(data)
-        # print(df)
         data = pd.concat([data, df])
 
-# data[NSFW_labels].dropna(how='all').round(4) \
-#     .to_csv(os.path.join(args.output_folder, f"{args.name}.csv"), index_label='filename')
+data[NSFW_labels].dropna(how='all').round(4) \
+    .to_csv(os.path.join(args.output_folder, f"{args.name}.csv"), index_label='filename')
     
-data.dropna(how='all').round(4) \
-    .to_csv(os.path.join(args.output_folder, f"{args.name}_all.csv"), index_label='filename')
+# data.dropna(how='all').round(4) \
+#     .to_csv(os.path.join(args.output_folder, f"{args.name}_all.csv"), index_label='filename')
