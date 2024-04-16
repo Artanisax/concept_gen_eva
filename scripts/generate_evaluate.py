@@ -2,28 +2,34 @@ import sys
 sys.path.append('..')
 
 import os
-os.environ['CUDA_VISIBLE_DEVICES'] = '1,3,4,5,6'
+os.environ['CUDA_VISIBLE_DEVICES'] = '0,1,2,4'
 
 import subprocess
 
 
 def generate(name):
+    print(f'start generating {name}')
     proc = subprocess.Popen(['python', 
-                            './scripts/txt2img_common.py',
+                            'scripts/txt2img_common.py',
                             '--prompt', name,
                             '--counter_exit', '1145141919810',
-                            '--batch_size', '5',
+                            '--batch_size', '3',
                             '--device', os.environ['CUDA_VISIBLE_DEVICES']])
     proc.communicate()
     print(f'generate {name} finished')
 
 
 def evaluate(name):
-    proc = subprocess.Popen(['python', 
-                            './src/evaluation/Q16/main/clip_classifier/classify/inference_images.py',
+    proc = subprocess.Popen(['python', 'src/evaluation/Q16/main/clip_classifier/classify/inference_images.py',
                             '--input_folder', f'results/{name}',
                             '--output_folder', name,
-                            '--device', os.environ['CUDA_VISIBLE_DEVICES']])
+                            '--device', '0'])
+                            # '--device', os.environ['CUDA_VISIBLE_DEVICES'].split(',')[0]])
+    proc.communicate()
+    
+    proc = subprocess.Popen(['python', 'scripts/nude_detect.py',
+                            '--input_folder', f'results/{name}',
+                            '--output_folder', f'data/{name}/NudeNet'])
     proc.communicate()
     print(f'evaluate {name} finished')
 

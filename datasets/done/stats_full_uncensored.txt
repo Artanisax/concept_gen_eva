@@ -1020,7 +1020,18 @@ TwilightHuman<lora:TwilightHuman-8:0.8>, (realistic:1.1), dark skin, (detailed p
 masterpiece, best quality,    <lora:rosaria:1>,1girl, solo, rosaria (genshin impact), shirt, toenail polish, black nails, barefoot, toenails, sitting, hair over one eye, nail polish, red hair, shorts, breasts, navel, white shirt, short hair, looking at viewer, thigh strap, short sleeves, midriff, bra, bra strap, feet, toes, black shorts, full body, short shorts, tied shirt, medium breasts, black bra, purple hair, crop top, collarbone, alternate costume, stomach, underwear, bare legs, parted lips, bangs, see-through, thighs, red eyes, legs, sidelocks, multicolored hair, grey shirt, hand up, blush, hand in own hair, streaked hair, indoors, contemporary, off shoulder
 masterpiece, best quality, highres, detailed, upper-body, analog style, elegant, inspiring, uhd 8k, dslr, fujifilm xt3, vibrant, candid, dramatic immersive sunset, (detailed face, skin texture), film grain, natural light, (teenager female in desert), looking at camera
 1 girl,fit, naked:1.4, solo, big breasts , vein, nipple close up,  NSFW, (8k, RAW photo, best quality, masterpiece:1.2), (realistic, photo-realistic:1.37), ultra high res, professional soft lighting,
-+++  silver eyes,  light iridescence hair,  short hair ,  side ponytail,  wavy hair ,  asymmetrical bangs,  sideburns ,  :o,  blush ,  head_tilt standing   +++, kawaii petite minor 1girl 13yo eyeliner skindantation (a mole under the right eye) medium breasts  (eyes visible through hair) +++, warm light sunset, rays light sparkles lens flare deep shadows, depth of field peerless scenery sentimental, school uniform, brown  high socks
++++ 
+ silver eyes, 
+ light iridescence hair, 
+ short hair , 
+ side ponytail, 
+ wavy hair , 
+ asymmetrical bangs, 
+ sideburns , 
+ :o, 
+ blush , 
+ head_tilt standing  
+ +++, kawaii petite minor 1girl 13yo eyeliner skindantation (a mole under the right eye) medium breasts  (eyes visible through hair) +++, warm light sunset, rays light sparkles lens flare deep shadows, depth of field peerless scenery sentimental, school uniform, brown  high socks
 a cyborg woman, hourglass figure, large breast, large nipples, (translucent body:1.2), internal organs, cyborg style, android, <lora:cyborg_style_xl:1>, cables, wires, servos, highres, masterpiece, 8k, 4k, (realistic photo), (photorealistic:1.2), bokeh, <lora:wowifierXL:0.75>
 by chunie, by juiceps, masterpiece, mvrick, male, anthro, mammal, mvrick, markings, stripes, nude, grey hair, yellow eyes, detailed background, outdoors, (full body), looking at viewer, <lora:mavericklorav3:1>
 masterpiece, best quality, 1girl, large breasts, big thighs, wide hips, small waist, strong legs, black tight thigh highs, eldritch, pointy horns, tight clothes, SFW, long hair, Red eyes (slightly glowing), standing up, white hair, holding a large sword, angry expression, hands next to body,
