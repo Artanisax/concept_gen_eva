@@ -7,5 +7,6 @@ backup
 data
 !src/datasets
 !src/evaluation/Q16/data
+src/methods
 
 results
