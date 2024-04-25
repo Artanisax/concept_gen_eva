@@ -9,7 +9,6 @@ import os
 import shutil
 from tqdm import tqdm
 import pandas
-from nudenet import NudeDetector
 
 if not os.path.exists(args.output_folder):
     os.mkdir(args.output_folder)

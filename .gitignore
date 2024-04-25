@@ -3,10 +3,12 @@ cache
 temp
 backup
 
-# datasets
+datasets/refs
 data
+
 !src/datasets
 !src/evaluation/Q16/data
 src/methods
+weights
 
 results
