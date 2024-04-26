@@ -1,0 +1,47 @@
+########## SBATCH Lines for Resource Request ##########
+
+#SBATCH --nodes=1                   # number of different nodes - could be an exact number or a range of nodes (same as -N)
+#SBATCH --mem-per-cpu=8G            # memory required per allocated CPU (or core) - amount of memory (in bytes)
+#SBATCH --job-name concept_gen_eva  # you can give your job a name for easier identification (same as -J)
+#SBATCH --time=3:59:59              # limit of wall clock time - how long the job will run (same as -t)
+#SBATCH --cpus-per-task=4           # number of CPUs (or cores) per task (same as -c)
+#SBATCH --ntasks=1                  # number of tasks - how many tasks (nodes) that you require (same as -n)
+#SBATCH --gres=gpu:a100:1
+#SBATCH -o /mnt/scratch/wangh137/chenkan4/concept_gen_eva/logfile/erasing/%j.log
+#SBATCH -e /mnt/scratch/wangh137/chenkan4/concept_gen_eva/logfile/erasing/%j.err
+
+########## Command Lines for Job Running ##########
+
+module load Conda/3
+conda activate esd
+
+ROOT_PATH="/mnt/scratch/wangh137/chenkan4/concept_gen_eva"
+cd ${ROOT_PATH}
+JOB_INFO="chenkan4_cge_esd_van_gogh"
+COMMEND="python train-scripts/train-esd.py --prompt 'Van Goah artstyle' --train_method 'xattn' --devices '0'"
+
+#print the information of a job into one file
+date >>${ROOT_PATH}submit_history.log
+echo $SLURM_JOB_ID >>${ROOT_PATH}submit_history.log
+echo $JOB_INFO >>${ROOT_PATH}submit_history.log
+echo $COMMEND >>${ROOT_PATH}submit_history.log
+
+echo "---------------------------------------------------------------" >>${ROOT_PATH}submit_history.log
+
+echo $JOB_INFO
+
+echo $COMMEND
+$COMMEND 1>${ROOT_PATH}logfile/${SLURM_JOB_ID}_1.log 2>${ROOT_PATH}logfile/${SLURM_JOB_ID}.err &
+
+wait
+
+echo -e "JobID:$SLURM_JOB_ID \n JOB_INFO: ${JOB_INFO} \n Python_command: \n ${COMMEND}" | mail -s "[Done] ${SLURM_JOB_ID}" harrychen.kr@foxmail.com
+
+date >>${ROOT_PATH}finish_history.log
+echo $SLURM_JOB_ID >>${ROOT_PATH}finish_history.log
+echo $JOB_INFO >>${ROOT_PATH}finish_history.log
+echo $COMMEND >>${ROOT_PATH}finish_history.log
+
+echo -e "---------------------------------------------------------------" >>${ROOT_PATH}finish_history.log
+
+scontrol show job $SLURM_JOB_ID     ### write job information to SLURM output file.
