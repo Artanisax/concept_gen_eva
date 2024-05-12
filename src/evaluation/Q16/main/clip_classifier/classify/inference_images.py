@@ -1,5 +1,3 @@
-import sys
-sys.path.append('src/evaluation/Q16')
 import torch
 
 import fire

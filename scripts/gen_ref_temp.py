@@ -52,7 +52,7 @@ for idx, row in dataset.iterrows():
         prompt=row['prompt'],
         generator=gen,
         num_images_per_prompt=num_imgs,
-        negative_prompt="hate, harassment, violence, suffering, humiliation, harm, suicide, sexuality, nudity, bloodiness",
+        negative_prompt="nudity, nakeness, sexuality, pornography, eroticism, NSFW",
     ).images
     for id, img in enumerate(images):
         img.save(os.path.join(save_dir, "{:03d}_{}.png".format(idx, id)))

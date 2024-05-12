@@ -2,14 +2,19 @@ __pycache__
 cache
 temp
 backup
+
 logfile
+finish_history.log
+submit_history.log
+scripts/sbatch
+
+*.sb
+*.log
+*.err
 
 datasets/refs
-data
+src/evaluation/ResNet/datasets
 
-!src/datasets
-!src/evaluation/Q16/data
-src/methods
-weights
+src
 
-results
+nudenet
