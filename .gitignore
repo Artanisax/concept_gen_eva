@@ -13,8 +13,9 @@ scripts/sbatch
 *.err
 
 datasets/refs
+src/methods
 src/evaluation/ResNet/datasets
-
-src
+src/evaluation/Q16/data
+sbatch
 
 nudenet
